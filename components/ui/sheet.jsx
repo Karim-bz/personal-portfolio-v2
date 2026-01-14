@@ -2,10 +2,9 @@
 
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-
 import { IoMdClose } from "react-icons/io";
-
 import { cn } from "@/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 function Sheet(props) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
@@ -40,6 +39,7 @@ function SheetContent({ className, children, side = "right", ...props }) {
   return (
     <SheetPortal>
       <SheetOverlay />
+
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
@@ -56,7 +56,15 @@ function SheetContent({ className, children, side = "right", ...props }) {
         )}
         {...props}
       >
+        {/* ✅ ACCESSIBILITY FIX */}
+        <SheetHeader>
+          <VisuallyHidden>
+            <SheetTitle>Sheet</SheetTitle>
+          </VisuallyHidden>
+        </SheetHeader>
+
         {children}
+
         <SheetPrimitive.Close className="absolute right-8 top-8 transition-opacity outline-none">
           <IoMdClose className="text-3xl text-accent" />
           <span className="sr-only">Close</span>

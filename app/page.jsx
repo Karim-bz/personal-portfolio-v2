@@ -7,7 +7,7 @@ import Stats from "../components/Stats";
 const Home = () => {
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full">
+      <div className="container mx-auto h-full px-4 lg:px-8 xl:px-16">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-4 xl:pb-14">
           {/* Text */}
           <div className="text-center xl:text-left order-2 xl:order-0">
