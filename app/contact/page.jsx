@@ -14,6 +14,8 @@ import {
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const info = [
   {
@@ -25,8 +27,8 @@ const info = [
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "me@bouzidkarim.com",
-    link: "mailto:me@bouzidkarim.com",
+    description: "karim.bouzid.pro@gmail.com",
+    link: "mailto:karim.bouzid.pro@gmail.com",
   },
   {
     icon: <FaMapMarkedAlt />,
@@ -36,6 +38,58 @@ const info = [
   },
 ];
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, // SERVICE ID
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, // TEMPLATE ID
+        {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY, // PUBLIC KEY
+      );
+
+      setSuccess(true);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+    }
+
+    setLoading(false);
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,7 +103,10 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-7.5">
           {/* FORM */}
           <div className="xl:w-[55%] order-2 xl:order-0">
-            <form className="flex flex-col gap-4 p-8 bg-[#27272c] rounded-xl">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 p-8 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -57,34 +114,74 @@ const Contact = () => {
               </p>
               {/* Input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input type="firstname" placeholder="First name" />
-                <Input type="lastname" placeholder="Last name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  name="firstName"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="lastName"
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="phone"
+                  placeholder="Phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
               </div>
               {/* Select */}
-              <Select>
+              <Select
+                onValueChange={(value) =>
+                  setFormData({ ...formData, service: value })
+                }
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="web">WEB Dev</SelectItem>
-                    <SelectItem value="mobile">Mobile Dev</SelectItem>
-                    <SelectItem value="logo">Logo Design</SelectItem>
+                    <SelectItem value="Web Development">
+                      Website Development
+                    </SelectItem>
+                    <SelectItem value="Mobile Development">
+                      Mobile Application Development
+                    </SelectItem>
+                    <SelectItem value="Dashboards & Data Management">
+                      Dashboards & Data Management
+                    </SelectItem>
+                    <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
+                    <SelectItem value="Logo Design">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* Text Area */}
               <Textarea
-                className="h-30"
+                name="message"
                 placeholder="Type your message here."
+                value={formData.message}
+                onChange={handleChange}
               />
               {/* Btn */}
-              <Button size="md" className="max-w-40">
-                Send message
+              <Button size="md" className="max-w-40" disabled={loading}>
+                {loading ? "Sending..." : "Send message"}
               </Button>
+
+              {success && (
+                <p className="text-green-400 text-sm mt-2">
+                  Message sent successfully!
+                </p>
+              )}
             </form>
           </div>
           {/* INFO */}
@@ -99,7 +196,10 @@ const Contact = () => {
                     <div className="flex-1">
                       <p className="text-white/60">{item.title}</p>
                       {item.link != "" ? (
-                        <Link href={item.link} className="text-xl">
+                        <Link
+                          href={item.link}
+                          className="text-xl hover:text-accent"
+                        >
                           {item.description}
                         </Link>
                       ) : (

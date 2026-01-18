@@ -41,27 +41,27 @@ const projects = [
     playstore:
       "https://play.google.com/store/apps/details?id=tn.flydelivery.client&hl=fr",
   },
+  // {
+  //   num: "02",
+  //   category: "frontend",
+  //   title: "Olivier Madera",
+  //   description:
+  //     "An eCommerce website for selling handcrafted wooden products used for food presentation and home decoration. The platform focuses on clean design, product presentation, and an intuitive shopping experience.",
+  //   stack: [
+  //     { name: "Wordpress" },
+  //     { name: "SQL" },
+  //     { name: "HTML5" },
+  //     { name: "CSS3" },
+  //     { name: "WooCommerce" },
+  //   ],
+  //   image: "/assets/work/thumb2.png",
+  //   live: "http://oliviermadera.com/",
+  //   github: "",
+  //   appstore: "",
+  //   playstore: "",
+  // },
   {
     num: "02",
-    category: "frontend",
-    title: "Olivier Madera",
-    description:
-      "An eCommerce website for selling handcrafted wooden products used for food presentation and home decoration. The platform focuses on clean design, product presentation, and an intuitive shopping experience.",
-    stack: [
-      { name: "Wordpress" },
-      { name: "SQL" },
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "WooCommerce" },
-    ],
-    image: "/assets/work/thumb2.png",
-    live: "http://oliviermadera.com/",
-    github: "",
-    appstore: "",
-    playstore: "",
-  },
-  {
-    num: "03",
     category: "frontend",
     title: "Personal Portfolio",
     description:

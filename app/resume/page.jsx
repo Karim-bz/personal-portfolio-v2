@@ -63,7 +63,7 @@ const about = {
     },
     {
       fieldName: "Email",
-      fieldValue: "me@bouzidkarim.com",
+      fieldValue: "karim.bouzid.pro@gmail.com",
     },
     {
       fieldName: "Languages",
