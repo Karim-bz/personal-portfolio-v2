@@ -11,8 +11,8 @@ const JetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Create next app",
-  description: "Generated and developed By Karim",
+  title: "Karim Bouzid | Software Engineer",
+  description: "This is my portfolio Developed By me, Karim Bouzid",
 };
 
 export default function RootLayout({ children }) {

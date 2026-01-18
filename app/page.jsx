@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 import Social from "../components/Social";
@@ -7,17 +8,17 @@ import Stats from "../components/Stats";
 const Home = () => {
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full px-4 lg:px-8 xl:px-16">
+      <div className="container mx-auto h-full py-4 px-4 lg:px-8 xl:px-16">
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-4 xl:pb-14">
           {/* Text */}
           <div className="text-center xl:text-left order-2 xl:order-0">
-            <span className="text-xl">Software Engineer</span>
+            <span className="text-2xl">Software Engineer</span>
             <h1 className="h1 mb-6">
               Hello I'm <br /> <span className="text-accent">Karim Bouzid</span>
             </h1>
-            <p className="max-w-125 mb-9 text-white/80">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies.
+            <p className="max-w-125 mb-9 text-xl text-white/80">
+              I’m a Software Engineer building scalable, high-performance web
+              and mobile applications with a strong focus on user experience.
             </p>
             {/* Btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
@@ -25,6 +26,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2"
+                onClick={() => window.open('https://drive.google.com/file/d/1FMShPOfD6Awsl0RClOvsEHH1v79Qxv66/view?usp=sharing', '_blank')}
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
@@ -45,7 +47,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Stats />
+      {/* <Stats /> */}
     </section>
   );
 };

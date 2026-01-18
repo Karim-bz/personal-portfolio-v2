@@ -9,35 +9,35 @@ const services = [
     num: "01",
     title: "Web Development",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A repellat sit pariatur reprehenderit, rerum possimus autem nihil perferendis placeat fugit voluptatum, quo vel aliquid at! Voluptas exercitationem quia numquam. Numquam!",
+      "I create modern, responsive websites using React, Next.js, and WordPress. From landing pages to business websites, I focus on clean design, fast performance, and smooth user experience.",
     href: "",
   },
   {
     num: "02",
-    title: "Mobile Development",
+    title: "Mobile App Development",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A repellat sit pariatur reprehenderit, rerum possimus autem nihil perferendis placeat fugit voluptatum, quo vel aliquid at! Voluptas exercitationem quia numquam. Numquam!",
+      "I build cross-platform apps for Android and iOS using React Native and Flutter. From UI design to deployment, I deliver apps that look great and work perfectly on every device.",
     href: "",
   },
   {
     num: "03",
-    title: "UI/UX",
+    title: "Dashboards & Data Management",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A repellat sit pariatur reprehenderit, rerum possimus autem nihil perferendis placeat fugit voluptatum, quo vel aliquid at! Voluptas exercitationem quia numquam. Numquam!",
+      "I develop custom dashboards and admin panels for apps and websites, making complex data easy to track, manage, and act upon.",
     href: "",
   },
   {
     num: "04",
-    title: "DevOps",
+    title: "UI/UX Design",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A repellat sit pariatur reprehenderit, rerum possimus autem nihil perferendis placeat fugit voluptatum, quo vel aliquid at! Voluptas exercitationem quia numquam. Numquam!",
+      "I design clean, modern interfaces and user experiences that are intuitive, visually appealing, and easy to navigate, helping apps and websites stand out.",
     href: "",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
+    <section className="min-h-[75vh] flex flex-col justify-center py-12 xl:py-0">
       <div className="container mx-auto h-full px-4 lg:px-8 xl:px-16">
         <motion.div
           initial={{ opacity: 0 }}

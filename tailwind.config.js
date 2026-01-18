@@ -1,6 +1,10 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
+  images: {
+    qualities: [70, 75, 100],
+  },
+  
   theme: {
     container: {
       center: true,

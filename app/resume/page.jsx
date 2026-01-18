@@ -1,13 +1,28 @@
 "use client";
 import {
   FaHtml5,
-  FaCss3,
+  FaCss3Alt,
   FaJs,
   FaReact,
-  FaFigma,
+  FaAngular,
+  FaBootstrap,
+  FaPhp,
   FaNodeJs,
+  FaGitAlt,
+  FaAndroid,
 } from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs, SiFlutter, SiDart } from "react-icons/si";
+import {
+  SiNextdotjs,
+  SiFlutter,
+  SiKotlin,
+  SiSwift,
+  SiSymfony,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiJira,
+} from "react-icons/si";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -17,15 +32,16 @@ import {
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 // about data
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, molestiae cupiditate? Corporis cum laborum voluptas, tempore, accusamus optio nisi laboriosam, repellat quos voluptatem facilis ea tempora. Obcaecati nostrum asperiores atque?",
+    "Get to know me,I am a Software engineer with a passion for modern web and mobile development",
   info: [
     {
-      fieldName: "name",
+      fieldName: "Name",
       fieldValue: "Karim Bouzid",
     },
     {
@@ -40,13 +56,14 @@ const about = {
       fieldName: "Nationality",
       fieldValue: "Tunisian",
     },
-    {
-      fieldName: "Email",
-      fieldValue: "me@bouzidkarim.com",
-    },
+
     {
       fieldName: "Freelance",
       fieldValue: "Available",
+    },
+    {
+      fieldName: "Email",
+      fieldValue: "me@bouzidkarim.com",
     },
     {
       fieldName: "Languages",
@@ -59,22 +76,37 @@ const experience = {
   icon: "./assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, molestiae cupiditate? Corporis cum laborum voluptas, tempore, accusamus optio nisi laboriosam, repellat quos voluptatem facilis ea tempora. Obcaecati nostrum asperiores atque?",
+    "My growth path is in the field of technology and development, where I have built, learned, and improved along the way.",
   items: [
     {
       company: "Creative DMS",
-      position: "React native Developer",
-      duration: "02/2025 - Present",
-    },
-    {
-      company: "NetCapital B.V.",
-      position: "Full Stack Developer",
-      duration: "04/2024 - 12/2024",
+      position: "Front-end Developer",
+      duration: "03/2025 - Present",
     },
     {
       company: "SYNC",
-      position: "Full Stack Developer",
+      position: "Software Engineer",
       duration: "10/2023 - 01/2025",
+    },
+    {
+      company: "NetCapital B.V.",
+      position: "Software Engineer",
+      duration: "04/2024 - 12/2024",
+    },
+    {
+      company: "Octoplus",
+      position: "Software Engineer Intern",
+      duration: "03/2022 - 09/2022",
+    },
+    {
+      company: "IPARK",
+      position: "Full Stack Web Developer Intern",
+      duration: "01/2020 - 06/2020",
+    },
+    {
+      company: "SW Consulting",
+      position: "Web Developer Intern",
+      duration: "01/2018 - 02/2018",
     },
   ],
 };
@@ -82,17 +114,16 @@ const experience = {
 const education = {
   icon: "./assets/resume/cap.svg",
   title: "My education",
-  description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, molestiae cupiditate? Corporis cum laborum voluptas, tempore, accusamus optio nisi laboriosam, repellat quos voluptatem facilis ea tempora. Obcaecati nostrum asperiores atque?",
+  description: "Where it all started, By Learning the fundamentals",
   items: [
     {
       institution: "ISET Rades",
-      degree: "Mobile application development",
+      degree: "Master degree on Mobile Application Development",
       duration: "2020 - 2022",
     },
     {
-      institution: "ISET Mahida",
-      degree: "WEB development",
+      institution: "ISET Mahdia",
+      degree: "Bachelor Degree on WEB development",
       duration: "2017 - 2020",
     },
   ],
@@ -100,29 +131,48 @@ const education = {
 
 const skills = {
   title: "My Skills",
-  description:
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere sunt, quo dolorum officia quos debitis ea non quis! Quasi velit aliquid tempore repellendus aperiam quae doloribus. Quod ad inventore numquam!",
+  description: "Skills built through experience and continuous learning.",
   skillsList: [
-    {
-      icon: <FaHtml5 />,
-      name: "HTML 5",
-    },
-    {
-      icon: <FaCss3 />,
-      name: "CSS 3",
-    },
-    {
-      icon: <SiFlutter />,
-      name: "Flutter",
-    },
-    {
-      icon: <SiNextdotjs />,
-      name: "NextJS",
-    },
+    // Frontend
+    { icon: <FaHtml5 />, name: "HTML 5", category: "Front end" },
+    { icon: <FaCss3Alt />, name: "CSS 3", category: "Front end" },
+    { icon: <FaJs />, name: "JavaScript", category: "Front end" },
+    { icon: <FaReact />, name: "ReactJS", category: "Front end" },
+    { icon: <SiNextdotjs />, name: "NextJS", category: "Front end" },
+    { icon: <FaAngular />, name: "Angular", category: "Front end" },
+    { icon: <FaBootstrap />, name: "Bootstrap", category: "Front end" },
+
+    // Mobile
+    { icon: <FaAndroid />, name: "Android", category: "Mobile" },
+    { icon: <SiKotlin />, name: "Kotlin", category: "Mobile" },
+    { icon: <SiFlutter />, name: "Flutter", category: "Mobile" },
+    { icon: <FaReact />, name: "React Native", category: "Mobile" },
+
+    // Backend
+    { icon: <FaPhp />, name: "PHP", category: "Back end" },
+    { icon: <SiSymfony />, name: "Symfony", category: "Back end" },
+    { icon: <FaNodeJs />, name: "NodeJS", category: "Back end" },
+    { icon: <SiExpress />, name: "ExpressJS", category: "Back end" },
+
+    // Databases
+    { icon: <SiMongodb />, name: "MongoDB", category: "Database" },
+    { icon: <SiMysql />, name: "SQL", category: "Database" },
+
+    // Tools
+    { icon: <FaGitAlt />, name: "Git", category: "Tools" },
+    { icon: <SiJira />, name: "Jira", category: "Tools" },
+    { icon: <FaGitAlt />, name: "Agile / SCRUM", category: "Tools" },
+    { icon: <FaJs />, name: "SEO", category: "Tools" },
   ],
 };
 
 const Resume = () => {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const filteredSkills =
+    activeFilter === "all"
+      ? skills.skillsList
+      : skills.skillsList.filter((skill) => skill.category === activeFilter);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -130,7 +180,7 @@ const Resume = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+      className="min-h-[75vh] flex items-center justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto px-4 lg:px-8 xl:px-16">
         <Tabs
@@ -149,20 +199,20 @@ const Resume = () => {
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-7.5 text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-150 text-white/60 mx-auto xl:mx-0">
+                <p className="text-white/60 mx-auto xl:mx-0">
                   {experience.description}
                 </p>
-                <ScrollArea className="h-100">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-7.5">
+                <ScrollArea className="h-95">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-5.5">
                     {experience.items.map((item, index) => {
                       return (
                         <li
                           key={index}
-                          className="bg-[#232329] h-46 py-6 px-10 rounded-xl flex flex-col 
+                          className="bg-[#232329] h-40 py-6 px-10 rounded-xl flex flex-col 
                                       justify-center items-center lg:items-start gap-1"
                         >
                           <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w-65 min-h-15 text-center lg:text-right">
+                          <h3 className="text-xl max-w-75 min-h-15 text-center lg:text-left">
                             {item.position}
                           </h3>
                           <div className="flex items-center gap-3">
@@ -180,10 +230,10 @@ const Resume = () => {
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-7.5 text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-150 text-white/60 mx-auto xl:mx-0">
+                <p className="text-white/60 mx-auto xl:mx-0">
                   {education.description}
                 </p>
-                <ScrollArea className="h-100">
+                <ScrollArea className="h-95">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-7.5">
                     {education.items.map((item, index) => {
                       return (
@@ -193,7 +243,7 @@ const Resume = () => {
                                       justify-center items-center lg:items-start gap-1"
                         >
                           <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w-65 min-h-15 text-center lg:text-right">
+                          <h3 className="text-xl min-h-15 text-center lg:text-left">
                             {item.degree}
                           </h3>
                           <div className="flex items-center gap-3">
@@ -216,8 +266,31 @@ const Resume = () => {
                     {skills.description}
                   </div>
                 </div>
+                <div className="flex flex-wrap justify-center xl:justify-start gap-3">
+                  {[
+                    "all",
+                    "Front end",
+                    "Mobile",
+                    "Back end",
+                    "Database",
+                    "Tools",
+                  ].map((filter) => (
+                    <button
+                      key={filter}
+                      onClick={() => setActiveFilter(filter)}
+                      className={`px-4 py-2 rounded-full text-sm capitalize transition-all
+                        ${
+                          activeFilter === filter
+                            ? "bg-accent text-primary"
+                            : "bg-[#232329] text-white/70 hover:text-white"
+                        }`}
+                    >
+                      {filter}
+                    </button>
+                  ))}
+                </div>
                 <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-7.5">
-                  {skills.skillsList.map((skill, index) => {
+                  {filteredSkills.map((skill, index) => {
                     return (
                       <li key={index}>
                         <TooltipProvider delayDuration={100}>
@@ -245,10 +318,10 @@ const Resume = () => {
             >
               <div className="flex flex-col gap=[30px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-150 text-white/60 mx-auto xl:mx-0">
+                <p className="text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-155">
+                <ul className="grid grid-cols-1 pt-5 xl:grid-cols-2 gap-y-6 max-w-155">
                   {about.info.map((item, index) => {
                     return (
                       <li
