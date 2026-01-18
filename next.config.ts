@@ -8,7 +8,8 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // enables `next export`
+  output: 'export',       // enables static export
+  trailingSlash: true,    // optional: keeps routes as folders (e.g., /about/index.html)
 };
 
 module.exports = nextConfig;

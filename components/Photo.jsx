@@ -22,13 +22,10 @@ const Photo = () => {
           }}
           className="w-74.5 h-74.5 xl:w-100.5 xl:h-100.5 mix-blend-lighten absolute"
         >
-          <Image
+          <img
             src="/assets/developer.png"
-            priority
-            quality={100}
-            fill
-            alt=""
-            className="object-contain"
+            alt="logo"
+            className="object-contain w-full h-full absolute top-0 left-0"
           />
         </motion.div>
         {/* circle */}

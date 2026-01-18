@@ -33,7 +33,7 @@ const projects = [
       { name: "CSS 3" },
       { name: "REST API" },
     ],
-    image: "/assets/work/flydelivery-thumb.png",
+    image: "/assets/work/flydelivery.png",
     alt: "Fly Delivery",
     live: "",
     github: "",
@@ -208,12 +208,11 @@ const Work = () => {
                       {/* overlay */}
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       {/* image */}
-                      <div className="relative w-full h-full">
-                        <Image
+                      <div className="relative w-full h-full bg-primary">
+                        <img
                           src={project.image}
-                          fill
-                          className="object-contain bg-primary border border-white/60"
                           alt=""
+                          className="object-contain w-full h-full"
                         />
                       </div>
                     </div>
