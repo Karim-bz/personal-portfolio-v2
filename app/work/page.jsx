@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { BsArrowRight, BsGithub } from "react-icons/bs";
+import { FaGooglePlay } from "react-icons/fa";
+import { SiAppstore } from "react-icons/si";
 import {
   Tooltip,
   TooltipContent,
@@ -18,51 +20,63 @@ import WorkSliderBtns from "../../components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "fullstack",
+    title: "Fly Delivery",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ratione nulla dignissimos iure saepe dolores vero libero. Ratione vero nulla illum molestias labore facilis corporis totam consectetur distinctio.",
+      "A complete delivery platform designed for food and product delivery using bikes. The system includes three mobile applications (customer, restaurant, and delivery driver) along with an admin dashboard to manage orders, drivers, and statistics in real time.",
     stack: [
-      { name: "html5" },
-      { name: "CSS3" },
-      { name: "JS" },
-      { name: "React" },
+      { name: "Flutter" },
+      { name: "Android" },
+      { name: "PHP" },
+      { name: "SQL" },
+      { name: "HTML 5" },
+      { name: "CSS 3" },
+      { name: "REST API" },
     ],
-    image: "/assets/work/thumb1.png",
+    image: "/assets/work/flydelivery-thumb.png",
+    alt: "Fly Delivery",
     live: "",
     github: "",
+    appstore: "https://apps.apple.com/ro/app/fly-delivery/id6502603819",
+    playstore:
+      "https://play.google.com/store/apps/details?id=tn.flydelivery.client&hl=fr",
   },
   {
     num: "02",
     category: "frontend",
-    title: "project 2",
+    title: "Olivier Madera",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ratione nulla dignissimos iure saepe dolores vero libero. Ratione vero nulla illum molestias labore facilis corporis totam consectetur distinctio.",
+      "An eCommerce website for selling handcrafted wooden products used for food presentation and home decoration. The platform focuses on clean design, product presentation, and an intuitive shopping experience.",
     stack: [
-      { name: "html5" },
+      { name: "Wordpress" },
+      { name: "SQL" },
+      { name: "HTML5" },
       { name: "CSS3" },
-      { name: "JS" },
-      { name: "React" },
+      { name: "WooCommerce" },
     ],
     image: "/assets/work/thumb2.png",
-    live: "",
+    live: "http://oliviermadera.com/",
     github: "",
+    appstore: "",
+    playstore: "",
   },
   {
     num: "03",
     category: "frontend",
-    title: "project 3",
+    title: "Personal Portfolio",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum maxime fuga ratione nulla dignissimos iure saepe dolores vero libero. Ratione vero nulla illum molestias labore facilis corporis totam consectetur distinctio.",
+      "A modern and responsive personal portfolio website showcasing projects, skills, and experience. Built with performance, animations, and clean UI in mind to highlight professional work effectively.",
     stack: [
-      { name: "html5" },
-      { name: "CSS3" },
-      { name: "JS" },
-      { name: "React" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "Framer Motion" },
+      { name: "JavaScript" },
     ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
+    image: "/assets/work/portfolio-thumb.png",
+    live: "https://bouzidkarim.com/",
+    github: "https://github.com/Karim-bz/personal-portfolio-v2",
+    appstore: "",
+    playstore: "",
   },
 ];
 
@@ -94,7 +108,7 @@ const Work = () => {
               </div>
               {/* Project category */}
               <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
+                {project.title}
               </h2>
               {/* project description */}
               <p className="text-white/60">{project.description}</p>
@@ -114,31 +128,68 @@ const Work = () => {
               <div className="border border-white/20"></div>
               {/* Buttons */}
               <div className="flex items-center gap-4">
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsArrowRight className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {/* Live app link */}
+                {project.live != "" && (
+                  <Link href={project.live}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
+                          <BsArrowRight className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Live project</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
                 {/* Github Button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repo</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.github != "" && (
+                  <Link href={project.github}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
+                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Github repo</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
+
+                {/* Google Play */}
+                {project.playstore != "" && (
+                  <Link href={project.playstore}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
+                          <FaGooglePlay className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Google Play</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
+
+                {/* App Store */}
+                {project.appstore != "" && (
+                  <Link href={project.appstore}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-17.5 h-17.5 rounded-full bg-white/5 flex justify-center items-center group">
+                          <SiAppstore className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>App Store</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -161,7 +212,7 @@ const Work = () => {
                         <Image
                           src={project.image}
                           fill
-                          className="object-cover"
+                          className="object-contain bg-primary border border-white/60"
                           alt=""
                         />
                       </div>
