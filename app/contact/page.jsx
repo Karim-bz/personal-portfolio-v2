@@ -13,22 +13,26 @@ import {
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
     description: "(+216) 94 770 763",
+    link: "https://wa.me/21694770763",
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
     description: "me@bouzidkarim.com",
+    link: "mailto:me@bouzidkarim.com",
   },
   {
     icon: <FaMapMarkedAlt />,
     title: "Address",
     description: "Monastir, Tunisia",
+    link: "",
   },
 ];
 const Contact = () => {
@@ -94,7 +98,13 @@ const Contact = () => {
                     </div>
                     <div className="flex-1">
                       <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
+                      {item.link != "" ? (
+                        <Link href={item.link} className="text-xl">
+                          {item.description}
+                        </Link>
+                      ) : (
+                        <h3 className="text-xl">{item.description}</h3>
+                      )}
                     </div>
                   </li>
                 );
