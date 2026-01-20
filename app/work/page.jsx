@@ -113,16 +113,13 @@ const Work = () => {
               {/* project description */}
               <p className="text-white/60">{project.description}</p>
               {/* Stack */}
-              <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-xl text-accent">
-                      {item.name}
-                      {/* Remove the last comma */}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
+              <ul className="flex flex-wrap gap-2">
+                {project.stack.map((item, index) => (
+                  <li key={index} className="text-sm sm:text-base text-accent">
+                    {item.name}
+                    {index !== project.stack.length - 1 && <span>,</span>}
+                  </li>
+                ))}
               </ul>
               {/* border */}
               <div className="border border-white/20"></div>
