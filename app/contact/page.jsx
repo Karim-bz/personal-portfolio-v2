@@ -46,9 +46,47 @@ const Contact = () => {
     service: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (formData.phone && !/^\+?[0-9\s()-]{7,}$/.test(formData.phone)) {
+      newErrors.phone = "Invalid phone number";
+    }
+
+    if (!formData.service) {
+      newErrors.service = "Please select a service";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +94,9 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
+
     setLoading(true);
     setSuccess(false);
 
@@ -83,6 +124,7 @@ const Contact = () => {
         service: "",
         message: "",
       });
+      setErrors({});
     } catch (error) {
       console.error("EmailJS error:", error);
     }
@@ -109,62 +151,86 @@ const Contact = () => {
             >
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Minima, sapiente deserunt.
+                Let’s turn your vision into something remarkable.
               </p>
               {/* Input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input
-                  name="firstName"
-                  placeholder="First name"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-                <Input
-                  name="lastName"
-                  placeholder="Last name"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
-                <Input
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                <Input
-                  name="phone"
-                  placeholder="Phone number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
+                <div className="flex flex-col gap-1">
+                  <Input
+                    name="firstName"
+                    placeholder="First name"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-400 text-sm">{errors.firstName}</p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Input
+                    name="lastName"
+                    placeholder="Last name"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-400 text-sm">{errors.lastName}</p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Input
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-sm">{errors.email}</p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  <Input
+                    name="phone"
+                    placeholder="Phone number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                  {errors.phone && (
+                    <p className="text-red-400 text-sm">{errors.phone}</p>
+                  )}
+                </div>
               </div>
               {/* Select */}
-              <Select
-                onValueChange={(value) =>
-                  setFormData({ ...formData, service: value })
-                }
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="Web Development">
-                      Website Development
-                    </SelectItem>
-                    <SelectItem value="Mobile Development">
-                      Mobile Application Development
-                    </SelectItem>
-                    <SelectItem value="Dashboards & Data Management">
-                      Dashboards & Data Management
-                    </SelectItem>
-                    <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
-                    <SelectItem value="Logo Design">Logo Design</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <div className="flex flex-col gap-1">
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, service: value })
+                  }
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Select a service</SelectLabel>
+                      <SelectItem value="Web Development">
+                        Website Development
+                      </SelectItem>
+                      <SelectItem value="Mobile Development">
+                        Mobile Application Development
+                      </SelectItem>
+                      <SelectItem value="Dashboards & Data Management">
+                        Dashboards & Data Management
+                      </SelectItem>
+                      <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
+                      <SelectItem value="Logo Design">Logo Design</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                {errors.service && (
+                  <p className="text-red-400 text-sm">{errors.service}</p>
+                )}
+              </div>
               {/* Text Area */}
               <Textarea
                 name="message"
