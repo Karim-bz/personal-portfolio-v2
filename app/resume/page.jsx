@@ -15,13 +15,12 @@ import {
   SiNextdotjs,
   SiFlutter,
   SiKotlin,
-  SiSwift,
   SiSymfony,
   SiExpress,
   SiMongodb,
-  SiPostgresql,
   SiMysql,
   SiJira,
+  SiTrello,
 } from "react-icons/si";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -161,8 +160,7 @@ const skills = {
     // Tools
     { icon: <FaGitAlt />, name: "Git", category: "Tools" },
     { icon: <SiJira />, name: "Jira", category: "Tools" },
-    { icon: <FaGitAlt />, name: "Agile / SCRUM", category: "Tools" },
-    { icon: <FaJs />, name: "SEO", category: "Tools" },
+    { icon: <SiTrello />, name: "Trello", category: "Tools" },
   ],
 };
 
