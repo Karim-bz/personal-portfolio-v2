@@ -78,6 +78,37 @@ const projects = [
     appstore: "",
     playstore: "",
   },
+  {
+    num: "03",
+    category: "fullstack",
+    title: "Tunisie Lift Maintenance",
+    description: "Tunisie Lift Maintenance est spécialisée dans la maintenance, la réparation et le dépannage de chariots élévateurs électriques et thermiques ainsi que des équipements de manutention.",
+    stack: [{ name: "Wordpress" }],
+    image: "/assets/work/tunisielift-thumb.png",
+    live: "https://tunisielift.com/",
+    github: "",
+    appstore: "",
+    playstore: "",
+  },
+  {
+    num: "04",
+    category: "fullstack",
+    title: "ZIVO",
+    description: "A seamless digital ecosystem that bridges the gap between brands and manufacturers. Organize and streamline your entire clothing production process with powerful tools designed for modern fashion businesses.",
+    stack: [
+      { name: "Flutter" },
+      { name: "Dart" },
+      { name: "Supabase" },
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "JavaScript" },
+    ],
+    image: "/assets/work/zivo-thumb.png",
+    live: "https://zivo-dashboard.vercel.app/",
+    github: "",
+    appstore: "",
+    playstore: "",
+  },
 ];
 
 const Work = () => {

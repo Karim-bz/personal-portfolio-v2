@@ -27,8 +27,8 @@ const info = [
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "karim.bouzid.pro@gmail.com",
-    link: "mailto:karim.bouzid.pro@gmail.com",
+    description: "me@bouzidkarim.com",
+    link: "mailto:me@bouzidkarim.com",
   },
   {
     icon: <FaMapMarkedAlt />,

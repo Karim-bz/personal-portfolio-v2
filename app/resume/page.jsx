@@ -62,7 +62,7 @@ const about = {
     },
     {
       fieldName: "Email",
-      fieldValue: "karim.bouzid.pro@gmail.com",
+      fieldValue: "me@bouzidkarim.com",
     },
     {
       fieldName: "Languages",
@@ -79,32 +79,37 @@ const experience = {
   items: [
     {
       company: "Creative DMS",
-      position: "Front-end Developer",
-      duration: "03/2025 - Present",
+      position: "Mobile application Developer",
+      duration: "03/2025 - 04/2026",
     },
     {
       company: "SYNC",
-      position: "Software Engineer",
+      position: "Mobile application Developer",
       duration: "10/2023 - 01/2025",
     },
     {
       company: "NetCapital B.V.",
-      position: "Software Engineer",
+      position: "Full Stack JS Developer",
       duration: "04/2024 - 12/2024",
     },
     {
+      company: "Fly Delivery",
+      position: "Flutter Developer (Freelance)",
+      duration: "03/2023 - 10/2023",
+    },
+    {
       company: "Octoplus",
-      position: "Software Engineer Intern",
+      position: "Flutter developer (Internship)",
       duration: "03/2022 - 09/2022",
     },
     {
       company: "IPARK",
-      position: "Full Stack Web Developer Intern",
+      position: "Full Stack Web Developer (Internship)",
       duration: "01/2020 - 06/2020",
     },
     {
       company: "SW Consulting",
-      position: "Web Developer Intern",
+      position: "Web Developer (Internship)",
       duration: "01/2018 - 02/2018",
     },
   ],
